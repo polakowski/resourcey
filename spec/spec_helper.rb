@@ -19,6 +19,7 @@ require 'resourcey'
 require 'combustion'
 require 'rspec/rails'
 require 'fixtures/fixtures'
+require 'fixtures/factories'
 
 require 'support/json_response'
 
@@ -26,6 +27,7 @@ Combustion.initialize! :active_record, :action_controller
 
 RSpec.configure do |config|
   config.include Support::JsonResponse, type: :controller
+  config.include FactoryBot::Syntax::Methods
 
   config.use_transactional_fixtures = true
 

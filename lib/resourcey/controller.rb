@@ -58,11 +58,7 @@ module Resourcey
     end
 
     def resources
-      resource_model.public_send(scope)
-    end
-
-    def scope
-      :all
+      resource_model.all
     end
 
     def resource_params

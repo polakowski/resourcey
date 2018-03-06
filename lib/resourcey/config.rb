@@ -1,21 +1,19 @@
 module Resourcey
   class Config
-    attr_reader :controller_parent
+    attr_accessor :foo
 
     def initialize
-      self.controller_parent = nil
+      self.foo = 'foo'
     end
+  end
 
-    attr_writer :controller_parent
+  class << self
+    attr_accessor :config
+  end
 
-    @@config ||= Config.new
+  @config ||= Config.new
 
-    class << self
-      attr_accessor :config
-
-      def configure
-        yield @@config
-      end
-    end
+  def self.configure
+    yield @config
   end
 end
