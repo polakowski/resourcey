@@ -47,13 +47,17 @@ module Resourcey
       @resource = resource_model.find(params[:id])
     end
 
+    def resource_model_name
+      @resource_model_name ||= controller_name.singularize.camelize
+    end
+
     def resource_model
-      name = controller_name.singularize.camelize
+      name = resource_model_name
       name.safe_constantize || raise("Cannot find model #{name}")
     end
 
     def serializer
-      name = "#{resource_model}Serializer"
+      name = "#{resource_model_name}Serializer"
       name.safe_constantize || raise("Cannot find serializer #{name}")
     end
 
