@@ -1,4 +1,4 @@
-# Resourcey
+# Resourcey [![Gem Version](https://badge.fury.io/rb/resourcey.png)](https://badge.fury.io/rb/resourcey)
 A lightweight gem for building resource-based APIs.
 
 ## Installation
@@ -25,7 +25,7 @@ class Api::V1::UsersController < Resourcey::Controller
 end
 ```
 
-For further reading, [click here](/docs/CONTROLLER.md)
+For further reading, [click here](/docs/CONTROLLER.md).
 
 ### Serializer
 
@@ -36,7 +36,7 @@ class UserSerializer < Resourcey::Serializer
 end
 ```
 
-For further reading, [click here](/docs/SERIALIZER.md)
+For further reading, [click here](/docs/SERIALIZER.md).
 
 ### Fetch the data
 

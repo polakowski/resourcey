@@ -14,12 +14,15 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
+require 'simplecov'
+SimpleCov.start
+
 require 'resourcey'
 
 require 'combustion'
 require 'rspec/rails'
-require 'fixtures/fixtures'
-require 'fixtures/factories'
+require 'fixtures'
+require 'factories'
 
 require 'support/json_response'
 

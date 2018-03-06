@@ -105,5 +105,9 @@ describe UsersController, type: :controller do
       expect { delete :destroy, params: { id: user.id } }.to change { User.count }
         .by(-1)
     end
+
+    context 'cannot destroy resource' do
+      
+    end
   end
 end

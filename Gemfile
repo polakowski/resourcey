@@ -10,6 +10,7 @@ group :test do
   gem 'actionpack', '>= 4.1' # action_controller, action_view
   gem 'rspec-rails'
   gem 'combustion', '~> 0.8.0'
+  gem 'simplecov', '~> 0.15.1'
 end
 
 group :development, :test do
