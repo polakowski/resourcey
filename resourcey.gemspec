@@ -1,13 +1,13 @@
 Gem::Specification.new do |s|
   s.name        = 'resourcey'
-  s.version     = '0.0.2'
+  s.version     = '0.0.3'
   s.date        = '2018-01-16'
   s.summary     = 'resourcey'
   s.description = 'Lightweight utility to create simple JSON Apis'
   s.authors     = ['polakowski']
   s.email       = 'marek.polakowski@gmail.com'
   s.files       = Dir.glob('{bin,lib}/**/*') + %w(README.md)
-  s.homepage    = 'http://rubygems.org/gems/resourcey'
+  s.homepage    = 'https://github.com/polakowski/resourcey'
   s.license     = 'MIT'
 
   s.required_ruby_version = '>= 2.4'
