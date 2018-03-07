@@ -49,8 +49,7 @@ describe UsersController, type: :controller do
 
       it 'returns errors' do
         post :create, params: params
-        expect(json_response['errors']).to include('age')
-        expect(json_response['errors']['age']).to include(I18n.t('errors.messages.blank'))
+        expect(json_errors).to include('age' => include(I18n.t('errors.messages.blank')))
       end
     end
   end
@@ -91,9 +90,8 @@ describe UsersController, type: :controller do
 
         post :update, params: params.merge(id: user.id)
 
-        expect(json_response['errors']).to include('age')
-        expect(json_response['errors']['age'])
-          .to include(I18n.t('errors.messages.greater_than', count: 0))
+        expect(json_errors).to include('age' =>
+          include(I18n.t('errors.messages.greater_than', count: 0)))
       end
     end
   end
@@ -107,7 +105,18 @@ describe UsersController, type: :controller do
     end
 
     context 'cannot destroy resource' do
-      
+      it 'does not destroy the resource' do
+        user = create(:user_with_posts, posts_count: 2)
+
+        expect { delete :destroy, params: { id: user.id } }.to_not change { User.count }
+      end
+
+      it 'returns errors' do
+        user = create(:user_with_posts, posts_count: 2)
+        delete :destroy, params: { id: user.id }
+
+        expect(json_errors).to include('base' => include('cannot destroy user with posts'))
+      end
     end
   end
 end
