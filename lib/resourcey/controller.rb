@@ -53,12 +53,12 @@ module Resourcey
 
     def resource_model
       name = resource_model_name
-      name.safe_constantize || raise("Cannot find model #{name}")
+      name.safe_constantize || raise(Errors::ClassNotFound.new(name, :model))
     end
 
     def serializer
       name = "#{resource_model_name}Serializer"
-      name.safe_constantize || raise("Cannot find serializer #{name}")
+      name.safe_constantize || raise(Errors::ClassNotFound.new(name, :serializer))
     end
 
     def resources
@@ -66,7 +66,7 @@ module Resourcey
     end
 
     def resource_params
-      raise('#resource_params must be defined!')
+      raise Errors::NotImplemented.new(:resource_params)
     end
 
     def serialized_collection(collection)

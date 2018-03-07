@@ -120,3 +120,13 @@ describe UsersController, type: :controller do
     end
   end
 end
+
+describe PostsController, type: :controller do
+  describe '#create' do
+    it 'raises exception for resource_params' do
+      params = { post: { content: 'Lorem' } }
+
+      expect { post :create, params: params }.to raise_error(Resourcey::Errors::NotImplemented)
+    end
+  end
+end
