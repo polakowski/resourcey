@@ -1,7 +1,11 @@
+require 'resourcey/controller_pagination'
+
 module Resourcey
   class Controller < ActionController::Base
+    include Resourcey::ControllerPagination
+
     def index
-      render json: serialized_collection(resources)
+      render json: serialized_collection(paginated_resources)
     end
 
     def show
@@ -53,12 +57,12 @@ module Resourcey
 
     def resource_model
       name = resource_model_name
-      name.safe_constantize || raise(Errors::ClassNotFound.new(name, :model))
+      name.safe_constantize || raise(Errors::ClassNotFound.new(name))
     end
 
     def serializer
       name = "#{resource_model_name}Serializer"
-      name.safe_constantize || raise(Errors::ClassNotFound.new(name, :serializer))
+      name.safe_constantize || raise(Errors::ClassNotFound.new(name))
     end
 
     def resources

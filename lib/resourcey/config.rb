@@ -1,9 +1,9 @@
 module Resourcey
   class Config
-    attr_accessor :foo
+    attr_accessor :default_paginator
 
     def initialize
-      self.foo = 'foo'
+      self.default_paginator = :paged
     end
   end
 

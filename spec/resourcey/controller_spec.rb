@@ -130,3 +130,23 @@ describe PostsController, type: :controller do
     end
   end
 end
+
+describe PaginatedPostsController, type: :controller do
+  describe '#index' do
+    it 'paginates using default paginator' do
+      create(:post, content: 'one')
+      create(:post, content: 'two')
+      create(:post, content: 'three')
+      create(:post, content: 'four')
+      create(:post, content: 'five')
+
+      get :index, params: { pagination: { page: 2, per_page: 2 } }
+
+      expect(json_response.count).to eq 2
+      expect(json_response).to match_array([
+          include('content' => 'three'),
+          include('content' => 'four'),
+        ])
+    end
+  end
+end

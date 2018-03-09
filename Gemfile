@@ -11,6 +11,7 @@ group :test do
   gem 'rspec-rails'
   gem 'combustion', '~> 0.8.0'
   gem 'simplecov', '~> 0.15.1'
+  gem 'database_cleaner', '~> 1.6.2'
 end
 
 group :development, :test do
