@@ -20,19 +20,25 @@ SimpleCov.start
 require 'resourcey'
 
 require 'combustion'
+require 'database_cleaner'
+require 'pry'
 require 'rspec/rails'
 require 'fixtures'
 require 'factories'
-
-require 'support/json_response'
+require 'support'
 
 Combustion.initialize! :active_record, :action_controller
 
 RSpec.configure do |config|
   config.include Support::JsonResponse, type: :controller
+  config.include Support::ActionParams
   config.include FactoryBot::Syntax::Methods
 
   config.use_transactional_fixtures = true
+  DatabaseCleaner.strategy = :transaction
+
+  config.before(:each) { DatabaseCleaner.start }
+  config.after(:each) { DatabaseCleaner.clean }
 
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest

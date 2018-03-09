@@ -1,11 +1,17 @@
 describe Resourcey::Config do
+  describe 'default config' do
+    it 'sets default variables values' do
+      expect(Resourcey.config.default_paginator).to eq(:paged)
+    end
+  end
+
   describe '#configure' do
-    it 'sets `foo` config var' do
+    it 'sets `default_paginator` config var' do
       expect {
-        Resourcey.configure { |config| config.foo = 'new-value' }
+        Resourcey.configure { |config| config.default_paginator = :foobar }
       }.to change {
-        Resourcey.config.foo
-      }.from('foo').to('new-value')
+        Resourcey.config.default_paginator
+      }.from(:paged).to(:foobar)
     end
   end
 end

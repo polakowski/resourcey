@@ -52,6 +52,17 @@ Now just visit `/api/v1/users`, and see how your resources are rendered.
 ]
 ```
 
+## Configuration
+Create configuration file in your `config/initializers` folder, and configure as usual:
+```ruby
+Resourcey.configure do |config|
+  config.some_config_variable = :some_value
+end
+```
+
+### Available config variables
+- `default_paginator` - name of paginator that will be used in every controller, if not configured on controller-level (default: `:paged`)
+
 ## Gem development
 If you want to take part in developing resourcey, fork this repository, commit your code, and create pull request.
 
