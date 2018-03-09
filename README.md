@@ -19,7 +19,7 @@ gem install resourcey
 
 ## Usage
 ### Controller
-For a resource called `user`, just create `UsersController` in a correct namespace (e.g. 'api/v1')
+For a resource called `user`, just create `UsersController`:
 ```ruby
 class Api::V1::UsersController < Resourcey::Controller
 end
@@ -51,6 +51,24 @@ Now just visit `/api/v1/users`, and see how your resources are rendered.
   { "id": 2, "email": "george.doe@example.com" }
 ]
 ```
+
+### Pagination
+To paginate resources, simply invoke `paginate` method in controller, like this:
+```ruby
+class ResourcesController < Resourcey::Controller
+  paginate
+end
+```
+
+This will use default `:paged` paginator. Now you need to pass `page` and `per_page` parameters in `pagination` parameter value, like this:
+
+```
+http://api.example.com/resources?pagination[page]=3&pagination[per_page]=10
+```
+
+This will fetch page 3, with 10 resources per single page. That's all! Pagination can be configured globally (see "Configuration" below). Also you can configure every controller's pagination.
+
+For further reading, [click here](/docs/PAGINATION.md).
 
 ## Configuration
 Create configuration file in your `config/initializers` folder, and configure as usual:
