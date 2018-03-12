@@ -148,5 +148,21 @@ describe PaginatedPostsController, type: :controller do
           include('content' => 'four'),
         ])
     end
+
+    context 'with offset paginator' do
+      it 'uses correct paginator' do
+        PaginatedPostsController.paginate_with :offset
+
+        create(:post, content: 'Oo')
+        create(:post, content: 'Ooo')
+        create(:post, content: 'Oooo')
+
+        expect(OffsetPaginator).to receive(:new).and_call_original
+
+        get :index, params: { offset: 1, limit: 1 }
+
+        PaginatedPostsController.paginate
+      end
+    end
   end
 end

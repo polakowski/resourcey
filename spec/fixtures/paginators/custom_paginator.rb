@@ -1,9 +1,8 @@
 class CustomPaginator < Resourcey::Paginator
-  permit_params :from, :to
+  permit_params :from_to
 
   def setup(opts)
-    @from = opts[:from]
-    @to = opts[:to]
+    @from, @to = opts[:from_to].split(',').map(&:to_i)
   end
 
   def paginate(scope)

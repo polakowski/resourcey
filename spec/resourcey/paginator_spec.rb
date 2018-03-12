@@ -7,7 +7,7 @@ describe Resourcey::Paginator do
 
   describe '#paginate' do
     it 'raises error for #setup' do
-      params = build_params(nil, foo: 'bar')
+      params = build_params(foo: 'bar')
       expect { Resourcey::Paginator.new(params) }.to raise_error(Resourcey::Errors::NotImplemented)
     end
   end
@@ -22,7 +22,7 @@ describe PagedPaginator do
       create(:user, name: 'Four')
       create(:user, name: 'Five')
 
-      params = build_params(nil, page: 2, per_page: 2)
+      params = build_params(page: 2, per_page: 2)
 
       paginator = PagedPaginator.new(params)
       pagination = paginator.paginate(User.all)
@@ -31,6 +31,30 @@ describe PagedPaginator do
       expect(pagination).to match_array([
           have_attributes(name: 'Three'),
           have_attributes(name: 'Four')
+        ])
+    end
+  end
+end
+
+describe OffsetPaginator do
+  describe '#paginate' do
+    it 'paginates' do
+      create(:user, name: 'Aaa')
+      create(:user, name: 'Bbb')
+      create(:user, name: 'Ccc')
+      create(:user, name: 'Ddd')
+      create(:user, name: 'Eee')
+
+      params = build_params(offset: 1, limit: 3)
+
+      paginator = OffsetPaginator.new(params)
+      pagination = paginator.paginate(User.all)
+
+      expect(pagination.count).to eq 3
+      expect(pagination).to match_array([
+          have_attributes(name: 'Bbb'),
+          have_attributes(name: 'Ccc'),
+          have_attributes(name: 'Ddd')
         ])
     end
   end
@@ -45,7 +69,7 @@ describe CustomPaginator do
       create(:user, name: 'Dd')
       create(:user, name: 'Ee')
 
-      params = build_params(nil, from: 2, to: 4)
+      params = build_params(from_to: '2,4')
 
       paginator = CustomPaginator.new(params)
       pagination = paginator.paginate(User.all)
@@ -56,6 +80,18 @@ describe CustomPaginator do
           have_attributes(name: 'Cc'),
           have_attributes(name: 'Dd')
         ])
+    end
+  end
+end
+
+describe InvalidPaginator do
+  describe '#paginate' do
+    it 'throws error on calling paginate' do
+      params = build_params(foo: 2)
+
+      paginator = InvalidPaginator.new(params)
+
+      expect { paginator.paginate }.to raise_error(Resourcey::Errors::NotImplemented)
     end
   end
 end

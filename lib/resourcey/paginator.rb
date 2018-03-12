@@ -8,7 +8,7 @@ module Resourcey
     end
 
     def parse_params(params)
-      params.permit(self.class.allowed_params)
+      params.permit(self.allowed_params)
     end
 
     def paginate(*args)
@@ -50,4 +50,21 @@ class PagedPaginator < Resourcey::Paginator
   private
 
   attr_reader :page, :per_page
+end
+
+class OffsetPaginator < Resourcey::Paginator
+  permit_params :offset, :limit
+
+  def setup(opts)
+    @offset = opts[:offset]
+    @limit = opts[:limit]
+  end
+
+  def paginate(scope)
+    scope.offset(offset).limit(limit)
+  end
+
+  private
+
+  attr_reader :offset, :limit
 end

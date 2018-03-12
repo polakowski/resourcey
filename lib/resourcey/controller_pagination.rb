@@ -12,7 +12,7 @@ module Resourcey
 
     def paginated_resources
       return resources unless self.pagination_enabled
-      
+
       paginator = current_paginator_class.new(params)
       paginator.paginate(resources)
     end
