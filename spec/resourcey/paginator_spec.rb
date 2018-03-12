@@ -7,7 +7,7 @@ describe Resourcey::Paginator do
 
   describe '#paginate' do
     it 'raises error for #setup' do
-      params = build_params(:pagination, foo: 'bar')
+      params = build_params(nil, foo: 'bar')
       expect { Resourcey::Paginator.new(params) }.to raise_error(Resourcey::Errors::NotImplemented)
     end
   end
@@ -22,7 +22,7 @@ describe PagedPaginator do
       create(:user, name: 'Four')
       create(:user, name: 'Five')
 
-      params = build_params(:pagination, page: 2, per_page: 2)
+      params = build_params(nil, page: 2, per_page: 2)
 
       paginator = PagedPaginator.new(params)
       pagination = paginator.paginate(User.all)
@@ -45,7 +45,7 @@ describe CustomPaginator do
       create(:user, name: 'Dd')
       create(:user, name: 'Ee')
 
-      params = build_params(:pagination, from: 2, to: 4)
+      params = build_params(nil, from: 2, to: 4)
 
       paginator = CustomPaginator.new(params)
       pagination = paginator.paginate(User.all)

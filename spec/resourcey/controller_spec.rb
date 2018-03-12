@@ -140,7 +140,7 @@ describe PaginatedPostsController, type: :controller do
       create(:post, content: 'four')
       create(:post, content: 'five')
 
-      get :index, params: { pagination: { page: 2, per_page: 2 } }
+      get :index, params: { page: 2, per_page: 2 }
 
       expect(json_response.count).to eq 2
       expect(json_response).to match_array([

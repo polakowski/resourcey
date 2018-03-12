@@ -8,7 +8,7 @@ module Resourcey
     end
 
     def parse_params(params)
-      params.require(:pagination).permit(self.class.allowed_params)
+      params.permit(self.class.allowed_params)
     end
 
     def paginate(*args)
