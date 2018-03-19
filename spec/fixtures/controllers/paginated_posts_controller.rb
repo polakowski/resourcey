@@ -1,10 +1,6 @@
 class PaginatedPostsController < Resourcey::Controller
+  use_model Post
   paginate
-
-  # temporary solution until configurable resource comes in
-  def resource_model
-    Post
-  end
 
   # temporary solution until configurable serializer comes in
   def serializer

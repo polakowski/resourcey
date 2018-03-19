@@ -1,8 +1,10 @@
 require 'resourcey/controller_pagination'
+require 'resourcey/controller_model'
 
 module Resourcey
   class Controller < ActionController::Base
     include Resourcey::ControllerPagination
+    include Resourcey::ControllerModel
 
     def index
       render json: serialized_collection(paginated_resources)
@@ -56,6 +58,11 @@ module Resourcey
     end
 
     def resource_model
+      return self.controller_model if self.controller_model
+      default_resource_model
+    end
+
+    def default_resource_model
       name = resource_model_name
       name.safe_constantize || raise(Errors::ClassNotFound.new(name))
     end
