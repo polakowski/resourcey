@@ -1,5 +1,7 @@
-# Resourcey [![Gem Version](https://img.shields.io/gem/v/resourcey.svg?label=version&colorB=43bd15)](https://badge.fury.io/rb/resourcey) ![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)
-A lightweight gem for building resource-based APIs.
+# Resourcey
+![Gem Version](https://img.shields.io/gem/v/resourcey.svg?label=version&colorB=43bd15) ![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)
+
+A lightweight rails gem for building resource-based APIs.
 
 ## Installation
 Add Resourcey to your `Gemfile`:

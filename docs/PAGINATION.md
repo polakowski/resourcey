@@ -39,9 +39,9 @@ class CustomPaginator < Resourcey::Paginator
 
   # paginate method applies paginator, should return activerecord-relation object
   def paginate(scope)
-    offset = from
+    offset = from - 1
     limit = (to - from) + 1
-    scope.offset(from - 1).limit(limit)
+    scope.offset(offset).limit(limit)
   end
 
   private
@@ -64,7 +64,7 @@ It receives two parameters:
 
 Example usage:
 ```
-http://api.example.com/resources?pagination[page]=3&pagination[per_page]=10
+http://api.example.com/resources?page=3&per_page=10
 ```
 
 ### Offset paginator
@@ -74,5 +74,5 @@ To use this paginator, set `default_paginator` config variable to `:offset`. It 
 
 Example usage:
 ```
-http://api.example.com/resources?pagination[offset]=100&pagination[limit]=5
+http://api.example.com/resources?offset=100&limit=5
 ```
