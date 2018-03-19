@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency 'bundler', '~> 1.5'
   s.add_development_dependency 'combustion', '~> 0.8.0'
-  s.add_dependency 'activerecord', '~> 4', '~> 5'
-  s.add_dependency 'railties', '~> 4', '~> 5'
+  s.add_dependency 'activerecord', '>= 4'
+  s.add_dependency 'railties', '>= 4'
   s.add_dependency 'active_model_serializers', '~> 0.10.6'
 end
