@@ -7,3 +7,6 @@
 
 ### 0.1.0
 - feature: pagination
+
+### 0.2.1
+- feature: ability to set model used by controller
