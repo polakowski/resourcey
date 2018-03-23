@@ -11,6 +11,22 @@ describe UsersController, type: :controller do
         include('name' => 'John')
       ])
     end
+
+    describe 'filtering' do
+      it 'uses filter when fetching objects' do
+        user_4 = create(:user, age: 23, name: 'Brad')
+        user_1 = create(:user, age: 20, name: 'Tim')
+        user_2 = create(:user, age: 21, name: 'James')
+        user_3 = create(:user, age: 22, name: 'Gregory')
+
+        get :index, params: { older_than: 21 }
+
+        expect(json_response).to match_array([
+            include('name' => 'Gregory'),
+            include('name' => 'Brad')
+          ])
+      end
+    end
   end
 
   describe '#show' do

@@ -11,10 +11,10 @@ module Resourcey
     private
 
     def paginated_resources
-      return resources unless self.pagination_enabled
+      return filtered_resources unless self.pagination_enabled
 
       paginator = current_paginator_class.new(params)
-      paginator.paginate(resources)
+      paginator.paginate(filtered_resources)
     end
 
     def current_paginator_class
