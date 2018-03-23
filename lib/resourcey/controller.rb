@@ -1,8 +1,8 @@
-require 'resourcey/controller_pagination'
-require 'resourcey/controller_model'
+require 'resourcey/controller_modules'
 
 module Resourcey
   class Controller < ActionController::Base
+    include Resourcey::ControllerFiltering
     include Resourcey::ControllerPagination
     include Resourcey::ControllerModel
 
