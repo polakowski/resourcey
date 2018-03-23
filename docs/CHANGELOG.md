@@ -10,3 +10,6 @@
 
 ### 0.2.1
 - feature: ability to set model used by controller
+
+### 0.2.2
+- hotfix: bump dependency version to fix a security issue (loofah -> v2.2.1)
