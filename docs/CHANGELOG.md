@@ -13,3 +13,6 @@
 
 ### 0.2.2
 - hotfix: bump dependency version to fix a security issue (loofah -> v2.2.1)
+
+### 0.3.0
+- feature: filtering

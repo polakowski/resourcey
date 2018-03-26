@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'resourcey'
-  s.version     = '0.2.2'
+  s.version     = '0.3.0'
   s.date        = DateTime.now.strftime('%F')
   s.summary     = 'resourcey'
   s.description = 'Lightweight utility to create simple JSON Apis'
