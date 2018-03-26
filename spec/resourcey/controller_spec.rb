@@ -14,16 +14,32 @@ describe UsersController, type: :controller do
 
     describe 'filtering' do
       it 'uses filter when fetching objects' do
-        user_4 = create(:user, age: 23, name: 'Brad')
-        user_1 = create(:user, age: 20, name: 'Tim')
-        user_2 = create(:user, age: 21, name: 'James')
-        user_3 = create(:user, age: 22, name: 'Gregory')
+        user_1 = create(:user, age: 23, name: 'Brad')
+        user_2 = create(:user, age: 20, name: 'Tim')
+        user_3 = create(:user, age: 21, name: 'James')
+        user_4 = create(:user, age: 22, name: 'Gregory')
 
         get :index, params: { older_than: 21 }
 
         expect(json_response).to match_array([
             include('name' => 'Gregory'),
             include('name' => 'Brad')
+          ])
+      end
+    end
+
+    context 'with multivalue filter' do
+      it 'uses multiline filter when fetching objects' do
+        user_1 = create(:user, age: 67, name: 'Joseph')
+        user_2 = create(:user, age: 55, name: 'Steve')
+        user_3 = create(:user, age: 21, name: 'Jeff')
+        user_4 = create(:user, age: 130, name: 'Mike')
+
+        get :index, params: { age_range: '22,129' }
+
+        expect(json_response).to match_array([
+            include('name' => 'Steve'),
+            include('name' => 'Joseph')
           ])
       end
     end
