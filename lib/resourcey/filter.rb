@@ -8,28 +8,25 @@ module Resourcey
     end
 
     def apply(scope)
-      @permitted_params.each do |filter_name, value|
-        filter = self.filters.find { |filter| filter[:name] == filter_name }
-        scope = filter[:block].call(value, scope)
+      @permitted_params.each do |filter_name, permitted_param|
+        filter = self.filters.find { |filter| filter.name == filter_name }
+        scope = filter.apply(permitted_param, scope)
       end
 
       scope
     end
 
     class << self
-      def filter(filter_name, &block)
+      def filter(filter_name, opts = {}, &block)
         self.allowed_params ||= []
         self.allowed_params << filter_name
 
         self.filters ||= []
-        self.filters << build_filter(filter_name, &block)
+        self.filters << build_filter(filter_name, opts, &block)
       end
 
-      def build_filter(filter_name, &block)
-        {
-          name: filter_name.to_s,
-          block: block
-        }
+      def build_filter(filter_name, opts, &block)
+        FilterProcessor.new(filter_name, opts, &block)
       end
     end
   end
