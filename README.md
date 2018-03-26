@@ -3,6 +3,17 @@
 
 A lightweight rails gem for building resource-based APIs.
 
+### Table of contents
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Controller](#controller)
+  - [Serialization](#serialization)
+  - [How to fetch](#fetch-the-data)
+  - [Pagination](#pagination)
+  - [Filtering](#filtering)
+- [Configuration](#configuration)
+- [Contributing](#contributing)
+
 ## Installation
 Add Resourcey to your `Gemfile`:
 ```ruby
@@ -20,6 +31,7 @@ gem install resourcey
 ```
 
 ## Usage
+
 ### Controller
 For a resource called `user`, just create `UsersController`:
 ```ruby
@@ -29,8 +41,7 @@ end
 
 For further reading, [click here](/docs/CONTROLLER.md).
 
-### Serializer
-
+### Serialization
 Now you need a serializer, let's assume that `User` has an email and an ID, go with this:
 ```ruby
 class UserSerializer < Resourcey::Serializer
@@ -72,6 +83,19 @@ This will fetch page 3, with 10 resources per single page. That's all! Paginatio
 
 For further reading, [click here](/docs/PAGINATION.md).
 
+### Filtering
+You can filter your resources using filter objects defined per single resource model. See below for an example:
+
+```ruby
+class UserFilter < Resourcey::Filter
+  filter :older_than do |value, scope|
+    scope.where('users.age > ?', value)
+  end
+end
+```
+
+For further reading, [click here](/docs/FILTERING.md).
+
 ## Configuration
 Create configuration file in your `config/initializers` folder, and configure as usual:
 ```ruby
@@ -83,7 +107,7 @@ end
 ### Available config variables
 - `default_paginator` - name of paginator that will be used in every controller, if not configured on controller-level (default: `:paged`)
 
-## Gem development
+## Contributing
 If you want to take part in developing resourcey, fork this repository, commit your code, and create pull request.
 
 ### Requirements
