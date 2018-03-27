@@ -1,5 +1,5 @@
 # Resourcey
-![Gem Version](https://img.shields.io/gem/v/resourcey.svg?label=version&colorB=43bd15) ![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Gem Version](https://img.shields.io/gem/v/resourcey.svg?label=version&colorB=43bd15) ![Test coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg) ![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)
 
 A lightweight rails gem for building resource-based APIs.
 
@@ -106,6 +106,7 @@ end
 
 ### Available config variables
 - `default_paginator` - name of paginator that will be used in every controller, if not configured on controller-level (default: `:paged`)
+- `controller_parent` - class or class name of controller, that `Resourcey::Controller` will inherit from (default: `ActionController::Base`)
 
 ## Contributing
 If you want to take part in developing resourcey, fork this repository, commit your code, and create pull request.

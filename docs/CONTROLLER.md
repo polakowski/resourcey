@@ -21,3 +21,16 @@ class ActiveUsersController < Resourcey::Controller
   end
 end
 ```
+
+More convenient solution will appear soon.
+
+## Controller parent
+By default, `Resourcey::Controller` inherits from `ActionController::Base`, you can change this behaviour by changing `controller_parent` config variable. See examples below:
+
+```ruby
+Resourcey.configure do |config|
+  config.controller_parent = 'MyCustomController'
+  # or
+  config.controller_parent = MyCustomController
+end
+```

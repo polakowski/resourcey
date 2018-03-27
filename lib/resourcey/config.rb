@@ -1,3 +1,5 @@
+require 'action_controller'
+
 module Resourcey
   class Config
     attr_accessor :default_paginator
