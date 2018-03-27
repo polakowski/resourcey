@@ -23,7 +23,7 @@ require 'combustion'
 require 'database_cleaner'
 require 'pry'
 require 'rspec/rails'
-require 'fixtures'
+require 'fixtures_initializer'
 require 'factories'
 require 'support'
 
