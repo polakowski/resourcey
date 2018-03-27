@@ -1,7 +1,7 @@
 require 'resourcey/controller_modules'
 
 module Resourcey
-  class Controller < ActionController::Base
+  class Controller < Resourcey.config.controller_parent
     include Resourcey::ControllerFiltering
     include Resourcey::ControllerPagination
     include Resourcey::ControllerModel
