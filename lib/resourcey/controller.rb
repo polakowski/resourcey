@@ -1,7 +1,7 @@
 require 'resourcey/controller_modules'
 
 module Resourcey
-  class Controller < Resourcey.config.controller_parent
+  class Controller < Resourcey.config.controller_parent.classify.constantize
     include Resourcey::ControllerFiltering
     include Resourcey::ControllerPagination
     include Resourcey::ControllerModel
