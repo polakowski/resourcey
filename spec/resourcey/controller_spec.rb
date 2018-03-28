@@ -29,7 +29,7 @@ describe UsersController, type: :controller do
     end
 
     context 'with multivalue filter' do
-      it 'uses multiline filter when fetching objects' do
+      it 'uses multivalue filter when fetching objects' do
         user_1 = create(:user, age: 67, name: 'Joseph')
         user_2 = create(:user, age: 55, name: 'Steve')
         user_3 = create(:user, age: 21, name: 'Jeff')

@@ -1,4 +1,4 @@
-# Resourcey - pagination
+# Resourcey - filtering
 You can filter your resources using filter objects defined per single resource model. See below for an example:
 
 ```ruby
@@ -23,7 +23,7 @@ http://api.example.com/api/users?older_than=15
 - [multivalue](#multivalue)
 
 ### Multivalue
-If your filter receives multiple values, pass `multiline: true` option, then your block will receive array with values.
+If your filter receives multiple values, pass `multivalue: true` option, then your block will receive array with values.
 
 ```ruby
   filter :age_range, multivalue: true do |values, scope|
