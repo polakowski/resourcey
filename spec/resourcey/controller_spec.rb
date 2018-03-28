@@ -198,3 +198,21 @@ describe PaginatedPostsController, type: :controller do
     end
   end
 end
+
+describe MostRecentPostsController, type: :controller do
+  describe '#index' do
+    it 'displays only most recent posts using collection scope' do
+      create(:post, content: 'Aaa', created_at: 4.days.ago)
+      create(:post, content: 'Bbb', created_at: 3.days.ago)
+      create(:post, content: 'Ccc', created_at: 1.day.ago)
+      create(:post, content: 'Ddd', created_at: 5.hours.ago)
+
+      get :index
+
+      expect(json_response).to match_array([
+          include('content' => 'Ccc'),
+          include('content' => 'Ddd')
+        ])
+    end
+  end
+end

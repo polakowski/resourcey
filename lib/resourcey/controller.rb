@@ -5,9 +5,10 @@ module Resourcey
     include Resourcey::ControllerFiltering
     include Resourcey::ControllerPagination
     include Resourcey::ControllerModel
+    include Resourcey::ControllerCollectionScope
 
     def index
-      render json: serialized_collection(paginated_resources)
+      render json: serialized_collection(scoped_resources)
     end
 
     def show
