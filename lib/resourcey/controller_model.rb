@@ -7,8 +7,8 @@ module Resourcey
     end
 
     module ClassMethods
-      def use_model(model)
-        self.controller_model = model
+      def use_model(model_or_name)
+        self.controller_model = model_or_name.to_s.classify.constantize
       end
     end
   end
