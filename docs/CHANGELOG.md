@@ -19,3 +19,7 @@
 
 ### 0.4.0
 - feature: allow to configure resourcey/controller superclass
+
+### 0.4.3
+- feature: add `collection_scope` to controller (it allows to scope resources)
+- `use_model` method can receive model name, or model class
