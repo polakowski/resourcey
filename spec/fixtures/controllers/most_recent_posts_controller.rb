@@ -1,5 +1,5 @@
 class MostRecentPostsController < Resourcey::Controller
-  use_model Post
+  use_model :post
   collection_scope &:most_recent
 
   # temporary solution until configurable serializer comes in

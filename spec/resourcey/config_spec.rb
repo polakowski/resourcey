@@ -2,7 +2,7 @@ describe Resourcey::Config do
   describe 'default config' do
     it 'sets default variables values' do
       expect(Resourcey.config.default_paginator).to eq(:paged)
-      expect(Resourcey.config.controller_parent).to eq(ActionController::Base)
+      expect(Resourcey.config.controller_parent).to eq('action_controller/base')
     end
   end
 
@@ -18,26 +18,12 @@ describe Resourcey::Config do
     describe 'controller_parent' do
       after { Resourcey.config = Resourcey::Config.new }
 
-      it 'sets class if string passed' do
-        expect {
-          Resourcey.configure { |config| config.controller_parent = 'FakeParentController' }
-        }.to change {
-          Resourcey.config.controller_parent
-        }.from(ActionController::Base).to(FakeParentController)
-      end
-
-      it 'sets class if class passed' do
+      it 'sets `controller_parent` config var' do
         expect {
           Resourcey.configure { |config| config.controller_parent = FakeParentController }
         }. to change {
           Resourcey.config.controller_parent
-        }.from(ActionController::Base).to(FakeParentController)
-      end
-
-      it 'raises error if invalid parent name' do
-        expect {
-          Resourcey.configure { |config| config.controller_parent = 1 }
-        }.to raise_error(Resourcey::Errors::RuntimeError)
+        }.from('action_controller/base').to(FakeParentController)
       end
     end
   end
