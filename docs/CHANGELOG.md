@@ -16,3 +16,6 @@
 
 ### 0.3.0
 - feature: filtering
+
+### 0.4.0
+- feature: allow to configure resourcey/controller superclass

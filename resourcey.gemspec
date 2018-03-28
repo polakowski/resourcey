@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'resourcey'
-  s.version     = '0.3.1'
+  s.version     = '0.4.0'
   s.summary     = 'resourcey'
   s.description = 'Lightweight utility to create simple JSON Apis'
   s.authors     = ['polakowski']
