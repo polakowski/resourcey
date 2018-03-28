@@ -104,9 +104,11 @@ Resourcey.configure do |config|
 end
 ```
 
-### Available config variables
-- `default_paginator` - name of paginator that will be used in every controller, if not configured on controller-level (default: `:paged`)
-- `controller_parent` - class or class name of controller, that `Resourcey::Controller` will inherit from (default: `ActionController::Base`)
+#### Available config variables
+| **config var** | **description**| **default** |
+| --- | --- | --- |
+| `default_paginator` | Name of paginator that will be used in every controller, if not configured on controller-level. Click [here](/docs/PAGINATION.md) for details. | `:paged`
+| `controller_parent` | Class or class name of controller, that `Resourcey::Controller` will inherit from. | `ActionController::Base` |
 
 ## Contributing
 If you want to take part in developing resourcey, fork this repository, commit your code, and create pull request.
