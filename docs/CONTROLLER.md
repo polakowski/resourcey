@@ -2,10 +2,14 @@
 Controller (`Resourcey::Controller` class) gives you ability to perform REST actions on your resources.
 
 ## Controller model
-For controller named `UsersController`, model is `User` by default (it uses `controller_name` method from the `ActionController::Base`). If you want to change model used by controller, just call `use_model` method inside, and pass model class:
+For controller named `UsersController`, model is `User` by default (it uses `controller_name` method from the `ActionController::Base`). If you want to change model used by controller, just call `use_model` method inside, and pass model class or model name:
 ```ruby
 class AdminsController < Resourcey::Controller
   use_model User
+  # or
+  use_model :user
+  # or
+  use_model 'User'
 end
 ```
 
