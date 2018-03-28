@@ -4,6 +4,7 @@
 A lightweight rails gem for building resource-based APIs.
 
 ### Table of contents
+- [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
   - [Controller](#controller)
@@ -13,6 +14,9 @@ A lightweight rails gem for building resource-based APIs.
   - [Filtering](#filtering)
 - [Configuration](#configuration)
 - [Contributing](#contributing)
+
+## Requirements
+Resourcey requires ruby 2.2.2 or higher.
 
 ## Installation
 Add Resourcey to your `Gemfile`:
@@ -114,8 +118,8 @@ end
 If you want to take part in developing resourcey, fork this repository, commit your code, and create pull request.
 
 ### Requirements
-- ruby 2.4.1
-- bundler
+- ruby 2.2.2 or higher
+- bundler gem
 
 ### Running local tests
 - rspec

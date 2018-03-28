@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.homepage    = 'https://github.com/polakowski/resourcey'
   s.license     = 'MIT'
 
-  s.required_ruby_version = '>= 2.4'
+  s.required_ruby_version = '>= 2.2.2'
 
   s.add_development_dependency 'bundler', '~> 1.5'
   s.add_development_dependency 'combustion', '~> 0.8.0'
