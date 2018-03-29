@@ -1,7 +1,7 @@
 # Resourcey
 ![Gem Version](https://img.shields.io/gem/v/resourcey.svg?label=version&colorB=43bd15) ![Test coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg) ![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)
 
-A lightweight rails gem for building resource-based APIs.
+A lightweight rails gem for building resource-based APIs. It gives you some conventions and convenient solutions for rendering resources in JSON format.
 
 ### Table of contents
 - [Requirements](#requirements)
