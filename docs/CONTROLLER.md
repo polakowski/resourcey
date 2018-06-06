@@ -14,15 +14,14 @@ end
 ```
 
 ## Controller serializer
-For controller named `UsersController`, serializer is `UserSerializer` by default. If you want to change serializer class used by controller, just have to override `serializer` method in controller:
+For controller named `UsersController`, serializer is `UserSerializer` by default. If you want to change serializer class used by controller, just call `serialize_with` method in controller:
 ```ruby
 class ActiveUsersController < Resourcey::Controller
+  serialize_with UserSerializer
 
-  private
-
-  def serializer
-    UserSerializer
-  end
+  # also possible:
+  # serialize_with 'UserSerializer'
+  # serialize_with :user_serializer
 end
 ```
 

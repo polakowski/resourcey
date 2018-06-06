@@ -6,6 +6,7 @@ module Resourcey
     include Resourcey::ControllerPagination
     include Resourcey::ControllerModel
     include Resourcey::ControllerCollectionScope
+    include Resourcey::ControllerSerialization
 
     def index
       render json: serialized_collection(scoped_resources)
@@ -69,6 +70,10 @@ module Resourcey
     end
 
     def serializer
+      build_serializer_from_configuration || default_serializer
+    end
+
+    def default_serializer
       name = "#{resource_model_name}Serializer"
       name.safe_constantize || raise(Errors::ClassNotFound.new(name))
     end
