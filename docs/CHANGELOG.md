@@ -23,3 +23,6 @@
 ### 0.4.3
 - feature: add `collection_scope` to controller (it allows to scope resources)
 - `use_model` method can receive model name, or model class
+
+### 0.5.0
+- feature: can configure serialization in controller
