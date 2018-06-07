@@ -25,7 +25,19 @@ class ActiveUsersController < Resourcey::Controller
 end
 ```
 
-More convenient solution will appear soon.
+If you need different serializers for some actions, you can use `configure_serialization` method:
+```ruby
+class ActiveUsersController < Resourcey::Controller
+  configure_serialization do |config|
+    config.action :index, serializer: UserSerializer::Index
+    config.action :show, serializer: UserSerializer::Show
+
+    # other actions will use serializer from `serialize_with` method, or you can set it
+    # like this:
+    config.default serializer: UserSerializer
+  end
+end
+```
 
 ## Controller parent
 By default, `Resourcey::Controller` inherits from `ActionController::Base`, you can change this behaviour by changing `controller_parent` config variable. See examples below:
