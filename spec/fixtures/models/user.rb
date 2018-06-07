@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   validates :age, numericality: { greater_than: 0 }, allow_nil: true
 
   has_many :posts
+  has_many :moderated_categories, class_name: 'Category'
 
   before_destroy :check_for_posts
 

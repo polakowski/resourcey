@@ -216,3 +216,40 @@ describe MostRecentPostsController, type: :controller do
     end
   end
 end
+
+describe CategoriesController, type: :controller do
+  describe '#index' do
+    it 'uses slim serializer' do
+      c_1 = create(:category, name: 'C_Aaa')
+      c_2 = create(:category, name: 'C_Bbb')
+      c_3 = create(:category, name: 'C_Ccc')
+
+      get :index
+
+      expect(json_response).to contain_exactly(
+          { 'id' => c_1.id, 'name' => 'C_Aaa' },
+          { 'id' => c_2.id, 'name' => 'C_Bbb' },
+          { 'id' => c_3.id, 'name' => 'C_Ccc' }
+        )
+    end
+  end
+
+  describe '#show' do
+    it 'uses show serializer' do
+      user = create(:user)
+      category = create(:category, name: 'C_Ddd', moderator: user)
+      create(:post, category: category)
+      create(:post, category: category)
+
+      get :show, params: { id: category.id }
+
+      expect(json_response).to include(
+        'id' => category.id,
+        'moderator_id' => user.id,
+        'moderator_name' => user.name,
+        'moderator_age' => user.age,
+        'posts_count' => 2
+      )
+    end
+  end
+end

@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :posts, only: :create
   resources :paginated_posts, only: :index
   resources :most_recent_posts, only: :index
+  resources :categories, only: %i[index show]
 end
