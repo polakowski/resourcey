@@ -88,8 +88,9 @@ class MostRecentPostsController < Resourcey::Controller
   paginate_with :from_to
   collection_scope &:most_recent
 
-  def serializer
-    PostSerializer
+  configure_serialization do |config|
+    config.action :index, serializer: MostRecentPostSerializer::Index
+    config.default serializer: MostRecentPostSerializer::Base
   end
 end
 ```
