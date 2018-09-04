@@ -1,3 +1,5 @@
-class CategorySerializer::Slim < Resourcey::Serializer
-  attribute :name
+module CategorySerializer
+  class Slim < Resourcey::Serializer
+    attribute :name
+  end
 end

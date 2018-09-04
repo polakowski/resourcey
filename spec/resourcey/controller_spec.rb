@@ -1,8 +1,8 @@
 describe UsersController, type: :controller do
   describe '#index' do
     it 'renders attributes' do
-      user_1 = create(:user, name: 'Tom')
-      user_2 = create(:user, name: 'John')
+      create(:user, name: 'Tom')
+      create(:user, name: 'John')
 
       get :index
 
@@ -14,44 +14,44 @@ describe UsersController, type: :controller do
 
     describe 'filtering' do
       it 'uses filter when fetching objects' do
-        user_1 = create(:user, age: 23, name: 'Brad')
-        user_2 = create(:user, age: 20, name: 'Tim')
-        user_3 = create(:user, age: 21, name: 'James')
-        user_4 = create(:user, age: 22, name: 'Gregory')
+        create(:user, age: 23, name: 'Brad')
+        create(:user, age: 20, name: 'Tim')
+        create(:user, age: 21, name: 'James')
+        create(:user, age: 22, name: 'Gregory')
 
         get :index, params: { older_than: 21 }
 
         expect(json_response).to match_array([
-            include('name' => 'Gregory'),
-            include('name' => 'Brad')
-          ])
+          include('name' => 'Gregory'),
+          include('name' => 'Brad')
+        ])
       end
     end
 
     context 'with multivalue filter' do
       it 'uses multivalue filter when fetching objects' do
-        user_1 = create(:user, age: 67, name: 'Joseph')
-        user_2 = create(:user, age: 55, name: 'Steve')
-        user_3 = create(:user, age: 21, name: 'Jeff')
-        user_4 = create(:user, age: 130, name: 'Mike')
+        create(:user, age: 67, name: 'Joseph')
+        create(:user, age: 55, name: 'Steve')
+        create(:user, age: 21, name: 'Jeff')
+        create(:user, age: 130, name: 'Mike')
 
         get :index, params: { age_range: '22,129' }
 
         expect(json_response).to match_array([
-            include('name' => 'Steve'),
-            include('name' => 'Joseph')
-          ])
+          include('name' => 'Steve'),
+          include('name' => 'Joseph')
+        ])
       end
     end
   end
 
   describe '#show' do
     it 'renders attributes' do
-      user_1 = create(:user, name: 'Tom')
-      user_2 = create(:user, name: 'John')
-      user_3 = create(:user, name: 'George')
+      create(:user, name: 'Tom')
+      user = create(:user, name: 'John')
+      create(:user, name: 'George')
 
-      get :show, params: { id: user_2.id }
+      get :show, params: { id: user.id }
 
       expect(json_response).to include('name' => 'John')
       expect(json_response).to_not include('name' => 'Tom')
@@ -176,9 +176,9 @@ describe PaginatedPostsController, type: :controller do
 
       expect(json_response.count).to eq 2
       expect(json_response).to match_array([
-          include('content' => 'three'),
-          include('content' => 'four'),
-        ])
+        include('content' => 'three'),
+        include('content' => 'four')
+      ])
     end
 
     context 'with offset paginator' do
@@ -210,14 +210,15 @@ describe MostRecentPostsController, type: :controller do
       get :index
 
       expect(json_response).to match_array([
-          include('content' => 'Ccc'),
-          include('content' => 'Ddd')
-        ])
+        include('content' => 'Ccc'),
+        include('content' => 'Ddd')
+      ])
     end
   end
 end
 
 describe CategoriesController, type: :controller do
+  # rubocop:disable Style/BracesAroundHashParameters
   describe '#index' do
     it 'uses slim serializer' do
       c_1 = create(:category, name: 'C_Aaa')
@@ -227,12 +228,13 @@ describe CategoriesController, type: :controller do
       get :index
 
       expect(json_response).to contain_exactly(
-          { 'id' => c_1.id, 'name' => 'C_Aaa' },
-          { 'id' => c_2.id, 'name' => 'C_Bbb' },
-          { 'id' => c_3.id, 'name' => 'C_Ccc' }
-        )
+        { 'id' => c_1.id, 'name' => 'C_Aaa' },
+        { 'id' => c_2.id, 'name' => 'C_Bbb' },
+        { 'id' => c_3.id, 'name' => 'C_Ccc' }
+      )
     end
   end
+  # rubocop:enable Style/BracesAroundHashParameters
 
   describe '#show' do
     it 'uses show serializer' do

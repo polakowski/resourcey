@@ -1,5 +1,4 @@
 class UsersController < Resourcey::Controller
-
   private
 
   def resource_params

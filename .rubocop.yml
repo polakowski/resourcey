@@ -6,9 +6,6 @@ AllCops:
     - 'lib/**/*.rb'
     - 'spec/**/*.rb'
 
-  Exclude:
-    # - 'spec/*_helper.rb'
-
 Layout/IndentHash:
   EnforcedStyle: 'consistent'
 
@@ -18,71 +15,34 @@ Layout/IndentArray:
 Layout/DotPosition:
   EnforcedStyle: 'leading'
 
-# Lint/AmbiguousBlockAssociation:
-#   Exclude:
-#     - '**/*_spec.rb'
-#
-# Metrics/AbcSize:
-#   Max: 17
-#
-# Metrics/BlockLength:
-#   Exclude:
-#     - 'spec/spec_helper.rb'
-#     - 'spec/**/*_factory.rb'
-#     - 'spec/support/matchers/*.rb'
-#     - 'spec/**/*_spec.rb'
-#
-# Metrics/LineLength:
-#   Max: 100
-#
-# Metrics/MethodLength:
-#   Max: 12
-#   Exclude:
-#     - 'db/migrate/**/*'
-#     - 'db/seeds/**/*'
-#
-# Metrics/ModuleLength:
-#   Exclude:
-#     - '**/*_spec.rb'
-#
-# Naming/AccessorMethodName:
-#   Exclude:
-#     - 'app/wrappers/**/*.rb'
-#
-# Naming/VariableNumber:
-#   EnforcedStyle: 'snake_case'
-#
-# Style/Alias:
-#   EnforcedStyle: 'prefer_alias_method'
-#
-# Style/BlockDelimiters:
-#   Exclude:
-#     - '**/*_spec.rb'
-#
-# Style/DateTime:
-#   Enabled: false
-#
-# Style/Documentation:
-#   Enabled: false
-#
-# Style/FormatString:
-#   EnforcedStyle: 'percent'
-#
-# Style/FrozenStringLiteralComment:
-#   Enabled: false
-#
-# Style/GuardClause:
-#   Enabled: true
-#
-# Style/NumericLiterals:
-#   Exclude:
-#     - '**/*_spec.rb'
-#     - '**/*_factory.rb'
-#
-# Layout/MultilineMethodCallIndentation:
-#   Exclude:
-#     - 'spec/features/*'
-#
-# Style/AndOr:
-#   Exclude:
-#     - 'app/forms/**/*.rb'
+Naming/VariableNumber:
+  EnforcedStyle: snake_case
+
+Metrics/LineLength:
+  Max: 100
+
+Style/BlockDelimiters:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*_spec.rb'
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - 'spec/**/*_spec.rb'
+
+Lint/AmbiguousOperator:
+  Enabled: false
+
+Rails/Delegate:
+  Enabled: false
+
+Rails/ApplicationRecord:
+  Enabled: false
+
+Style/AndOr:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false

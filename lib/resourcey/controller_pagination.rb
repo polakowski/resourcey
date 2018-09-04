@@ -11,7 +11,7 @@ module Resourcey
     private
 
     def paginated_resources
-      return filtered_resources unless self.pagination_enabled
+      return filtered_resources unless pagination_enabled
 
       paginator = current_paginator_class.new(params)
       paginator.paginate(filtered_resources)
@@ -22,7 +22,7 @@ module Resourcey
     end
 
     def current_paginator_name
-      self.controller_paginator_name || Config.default_paginator
+      controller_paginator_name || Config.default_paginator
     end
 
     module ClassMethods

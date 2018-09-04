@@ -6,9 +6,9 @@ class CustomPaginator < Resourcey::Paginator
   end
 
   def paginate(scope)
-    offset = from
+    offset = from - 1
     limit = (to - from) + 1
-    scope.offset(from - 1).limit(limit)
+    scope.offset(offset).limit(limit)
   end
 
   private

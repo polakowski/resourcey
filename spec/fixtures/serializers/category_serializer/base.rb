@@ -1,3 +1,5 @@
-class CategorySerializer::Base < Resourcey::Serializer
-  attributes :name
+module CategorySerializer
+  class Base < Resourcey::Serializer
+    attributes :name
+  end
 end

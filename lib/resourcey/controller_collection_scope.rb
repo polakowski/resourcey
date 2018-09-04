@@ -7,8 +7,8 @@ module Resourcey
     end
 
     def scoped_resources
-      return paginated_resources if self.scoping_method.nil?
-      self.scoping_method.call paginated_resources
+      return paginated_resources if scoping_method.nil?
+      scoping_method.call paginated_resources
     end
 
     module ClassMethods
