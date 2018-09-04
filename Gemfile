@@ -17,4 +17,5 @@ group :development, :test do
   gem 'pry', '~> 0.11.3'
   gem 'rspec', '~> 3.7'
   gem 'factory_bot', '~> 4.8'
+  gem 'rubocop', '~> 0.58.2', require: false
 end

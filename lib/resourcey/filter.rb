@@ -4,13 +4,13 @@ module Resourcey
     class_attribute :filters
 
     def initialize(params)
-      @permitted_params = params.permit(self.allowed_params)
+      @permitted_params = params.permit(allowed_params)
     end
 
     def apply(scope)
       @permitted_params.each do |filter_name, permitted_param|
-        filter = self.filters.find { |filter| filter.name == filter_name }
-        scope = filter.apply(permitted_param, scope)
+        current_filter = filters.find { |filter| filter.name == filter_name }
+        scope = current_filter.apply(permitted_param, scope)
       end
 
       scope

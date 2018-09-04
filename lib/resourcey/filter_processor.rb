@@ -29,7 +29,7 @@ module Resourcey
     def validate_options!
       invalid_option = opts.keys.find { |option| ALLOWED_OPTIONS.exclude? option }
       return true if invalid_option.nil?
-      raise Errors::OptionNotAllowed.new(invalid_option)
+      raise Errors::OptionNotAllowed, invalid_option
     end
   end
 end

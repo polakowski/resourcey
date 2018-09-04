@@ -29,9 +29,9 @@ describe PagedPaginator do
 
       expect(pagination.count).to eq 2
       expect(pagination).to match_array([
-          have_attributes(name: 'Three'),
-          have_attributes(name: 'Four')
-        ])
+        have_attributes(name: 'Three'),
+        have_attributes(name: 'Four')
+      ])
     end
   end
 end
@@ -52,10 +52,10 @@ describe OffsetPaginator do
 
       expect(pagination.count).to eq 3
       expect(pagination).to match_array([
-          have_attributes(name: 'Bbb'),
-          have_attributes(name: 'Ccc'),
-          have_attributes(name: 'Ddd')
-        ])
+        have_attributes(name: 'Bbb'),
+        have_attributes(name: 'Ccc'),
+        have_attributes(name: 'Ddd')
+      ])
     end
   end
 end
@@ -76,10 +76,10 @@ describe CustomPaginator do
 
       expect(pagination.count).to eq 3
       expect(pagination).to match_array([
-          have_attributes(name: 'Bb'),
-          have_attributes(name: 'Cc'),
-          have_attributes(name: 'Dd')
-        ])
+        have_attributes(name: 'Bb'),
+        have_attributes(name: 'Cc'),
+        have_attributes(name: 'Dd')
+      ])
     end
   end
 end

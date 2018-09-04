@@ -1,0 +1,48 @@
+Rails:
+  Enabled: true
+
+AllCops:
+  Include:
+    - 'lib/**/*.rb'
+    - 'spec/**/*.rb'
+
+Layout/IndentHash:
+  EnforcedStyle: 'consistent'
+
+Layout/IndentArray:
+  EnforcedStyle: 'consistent'
+
+Layout/DotPosition:
+  EnforcedStyle: 'leading'
+
+Naming/VariableNumber:
+  EnforcedStyle: snake_case
+
+Metrics/LineLength:
+  Max: 100
+
+Style/BlockDelimiters:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*_spec.rb'
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - 'spec/**/*_spec.rb'
+
+Lint/AmbiguousOperator:
+  Enabled: false
+
+Rails/Delegate:
+  Enabled: false
+
+Rails/ApplicationRecord:
+  Enabled: false
+
+Style/AndOr:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false

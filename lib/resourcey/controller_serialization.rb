@@ -7,7 +7,7 @@ module Resourcey
       attr_accessor :fallback_serializer
 
       def initialize
-        @actions_serializers = Hash.new.with_indifferent_access
+        @actions_serializers = {}.with_indifferent_access
         @fallback_serializer = nil
       end
 

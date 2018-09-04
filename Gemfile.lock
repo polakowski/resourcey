@@ -39,6 +39,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (8.0.0)
+    ast (2.4.0)
     builder (3.2.3)
     case_transform (0.2)
       activesupport
@@ -57,6 +58,7 @@ GEM
       activesupport (>= 3.0.0)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
+    jaro_winkler (1.5.1)
     json (2.1.0)
     jsonapi-renderer (0.2.0)
     loofah (2.2.1)
@@ -67,7 +69,11 @@ GEM
     minitest (5.11.3)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
+    parallel (1.12.1)
+    parser (2.5.1.2)
+      ast (~> 2.4.0)
     pg (0.18.4)
+    powerpack (0.1.2)
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -85,6 +91,7 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
+    rainbow (3.0.0)
     rake (12.3.0)
     rspec (3.7.0)
       rspec-core (~> 3.7.0)
@@ -107,6 +114,15 @@ GEM
       rspec-mocks (~> 3.7.0)
       rspec-support (~> 3.7.0)
     rspec-support (3.7.1)
+    rubocop (0.58.2)
+      jaro_winkler (~> 1.5.1)
+      parallel (~> 1.10)
+      parser (>= 2.5, != 2.5.1.1)
+      powerpack (~> 0.1)
+      rainbow (>= 2.2.2, < 4.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (~> 1.0, >= 1.0.1)
+    ruby-progressbar (1.10.0)
     simplecov (0.15.1)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
@@ -116,6 +132,7 @@ GEM
     thread_safe (0.3.6)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
+    unicode-display_width (1.4.0)
 
 PLATFORMS
   ruby
@@ -133,6 +150,7 @@ DEPENDENCIES
   resourcey!
   rspec (~> 3.7)
   rspec-rails
+  rubocop (~> 0.58.2)
   simplecov (~> 0.15.1)
 
 BUNDLED WITH

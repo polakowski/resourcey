@@ -60,13 +60,13 @@ module Resourcey
     end
 
     def resource_model
-      return self.controller_model if self.controller_model
+      return controller_model if controller_model
       default_resource_model
     end
 
     def default_resource_model
       name = resource_model_name
-      name.safe_constantize || raise(Errors::ClassNotFound.new(name))
+      name.safe_constantize || raise(Errors::ClassNotFound, name)
     end
 
     def serializer
@@ -75,7 +75,7 @@ module Resourcey
 
     def default_serializer
       name = "#{resource_model_name}Serializer"
-      name.safe_constantize || raise(Errors::ClassNotFound.new(name))
+      name.safe_constantize || raise(Errors::ClassNotFound, name)
     end
 
     def resources
@@ -83,7 +83,7 @@ module Resourcey
     end
 
     def resource_params
-      raise Errors::NotImplemented.new(:resource_params)
+      raise Errors::NotImplemented, :resource_params
     end
 
     def serialized_collection(collection)

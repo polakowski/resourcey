@@ -8,23 +8,21 @@ module Resourcey
     end
 
     def parse_params(params)
-      params.permit(self.allowed_params)
+      params.permit(allowed_params)
     end
 
-    def paginate(*args)
-      raise Errors::NotImplemented.new(:paginate)
+    def paginate(*)
+      raise Errors::NotImplemented, :paginate
     end
 
-    def setup(*args)
-      raise Errors::NotImplemented.new(:setup)
+    def setup(*)
+      raise Errors::NotImplemented, :setup
     end
-
-    private
 
     class << self
       def class_for(name)
         paginator_name = "#{name.to_s.camelize}Paginator"
-        paginator_name.safe_constantize || raise(Errors::ClassNotFound.new(paginator_name))
+        paginator_name.safe_constantize || raise(Errors::ClassNotFound, paginator_name)
       end
 
       def permit_params(*args)
