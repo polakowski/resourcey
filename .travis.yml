@@ -4,10 +4,11 @@ install:
   - bundle install --jobs=3 --retry=3
 cache: bundler
 services:
-- postgresql
+  - postgresql
 addons:
   postgresql: '9.4'
 env:
-- RAILS_ENV=test
+  - RAILS_ENV=test
 script:
-- bundle exec rspec spec
+  - bundle exec rubocop --config .rubocop.yml
+  - bundle exec rspec spec
